@@ -1,0 +1,15 @@
+services:
+  dwh_postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adminpassword
+      POSTGRES_DB: insurance_dwh
+    ports:
+      - "5432:5432"
+    volumes:
+      - insurance_pgdata:/var/lib/postgresql/data
+
+volumes:
+  insurance_pgdata:
+  
