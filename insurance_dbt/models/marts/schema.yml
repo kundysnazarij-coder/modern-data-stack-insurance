@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: dim_policy_holders
+    columns:
+      - name: holder_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_insurance_plans
+    columns:
+      - name: plan_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: dim_agents
+    columns:
+      - name: agent_id
+        data_tests:
+          - unique
+          - not_null
+
+  - name: fct_policies_sold
+    columns:
+      - name: policy_id
+        data_tests:
+          - unique
+          - not_null
+      - name: holder_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_policy_holders')
+                field: holder_id
+
+  - name: fct_claims
+    columns:
+      - name: claim_id
+        data_tests:
+          - unique
+          - not_null
+      - name: policy_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('fct_policies_sold')
+                field: policy_id
