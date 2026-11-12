@@ -17,6 +17,10 @@ def load_data():
     with engine.begin() as conn:
         conn.execute(text("CREATE SCHEMA IF NOT EXISTS raw"))
 
+    with engine.begin() as conn:
+        for table in reversed(tables):
+            conn.execute(text(f"DELETE FROM raw.{table}"))
+
     for table in tables:
         df = pd.read_parquet(f"data_lake/raw_{table}.parquet")
 
@@ -24,7 +28,7 @@ def load_data():
             table,
             engine,
             schema="raw",
-            if_exists="replace",
+            if_exists="append",
             index=False
         )
 

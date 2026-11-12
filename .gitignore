@@ -3,3 +3,12 @@ __pycache__/
 *.pyc
 .env
 data_lake/
+logs/
+venv/
+__pycache__/
+airflow/airflow.db
+airflow/airflow.cfg
+airflow/logs/
+**/target/
+**/dbt_packages/
+**/profiles.yml

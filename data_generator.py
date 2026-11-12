@@ -9,7 +9,7 @@ random.seed(42)
 
 os.makedirs('data_lake', exist_ok=True)
 
-def generate_policy_holders(n=500):
+def generate_policy_holders(n=1000):
     data = []
     for i in range(1, n + 1):
         data.append({
