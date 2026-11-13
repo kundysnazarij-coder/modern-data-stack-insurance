@@ -1,0 +1,13 @@
+﻿version: 2
+
+sources:
+  - name: insurance_raw
+    description: "Початкові дані страхової компанії"
+    database: insurance_dwh
+    schema: raw
+    tables:
+      - name: policy_holders
+      - name: insurance_plans
+      - name: agents
+      - name: policies_sold
+      - name: claims
